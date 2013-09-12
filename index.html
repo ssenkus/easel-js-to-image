@@ -36,22 +36,24 @@
 
         <div id="newItemControls">
             <form>
-            <input id="text" type="text" />
-            <select id="font">
-                <option value="Arial">Arial</option>
-                <option value="Georgia">Georgia</option>
-                <option value="Verdana">Verdana</option>
-                <option value="'Cinzel Decorative'">Cinzel Decorative</option>
-                <option value="'Trade Winds'">Trade Winds</option>
-            </select>
-            <select id="size">
-                <option value="12px">12px</option>
-                <option value="18px">18px</option>
-                <option value="24px">24px</option>
-                <option value="36px">36px</option>
-                <option value="56px">56px</option>
-            </select>            
-            <button type="button" id="add">Add</button>
+                <input id="text" type="text" />
+                <select id="font">
+                    <option value="Arial">Arial</option>
+                    <option value="Georgia">Georgia</option>
+                    <option value="Verdana">Verdana</option>
+                    <option value="'Cinzel Decorative'">Cinzel Decorative</option>
+                    <option value="'Trade Winds'">Trade Winds</option>
+                </select>
+                <select id="size">
+                    <option value="12px">12px</option>
+                    <option value="18px">18px</option>
+                    <option value="24px">24px</option>
+                    <option value="36px">36px</option>
+                    <option value="56px">56px</option>
+                </select>            
+                <input type="text" id="color" />
+
+                <button type="button" id="add">Add</button>
             </form>
         </div>
 
@@ -72,7 +74,7 @@
                 $('form').submit(function(e) {
                     e.preventDefault();
                     $('#add').trigger('click')
-                    
+
                 });
 
 
@@ -85,7 +87,8 @@
                     newElem.css({
                         'position': 'absolute',
                         'font-family': $('#font').val(),
-                        'font-size': $('#size').val()
+                        'font-size': $('#size').val(),
+                        'color': $('#color').val()
                     });
 
                 });
