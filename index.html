@@ -6,8 +6,8 @@
             #draggable { 
                 width: 300px;
             }
-            
-            
+
+
             #contentContainer {
                 width: 1120px;
                 height: 400px;
@@ -35,17 +35,24 @@
     <body onLoad="init();">
 
         <div id="newItemControls">
+            <form>
             <input id="text" type="text" />
             <select id="font">
                 <option value="Arial">Arial</option>
                 <option value="Georgia">Georgia</option>
                 <option value="Verdana">Verdana</option>
                 <option value="'Cinzel Decorative'">Cinzel Decorative</option>
+                <option value="'Trade Winds'">Trade Winds</option>
             </select>
-            <button id="add">Add</button>
-
-
-
+            <select id="size">
+                <option value="12px">12px</option>
+                <option value="18px">18px</option>
+                <option value="24px">24px</option>
+                <option value="36px">36px</option>
+                <option value="56px">56px</option>
+            </select>            
+            <button type="button" id="add">Add</button>
+            </form>
         </div>
 
         <div id="contentContainer">
@@ -57,47 +64,31 @@
 
         <script>
             $(document).ready(function() {
-                
-                                $("h1").draggable().css('position', 'absolute');
-            
-                
-                
-                
-                
-                $('#font').on('change', function() {
-                    $('h1').css('font-family', $(this).val());
-                    alert(x);
-                    //$(h1).
+
+                $("h1").draggable().css('position', 'absolute');
 
 
 
-
-
+                $('form').submit(function(e) {
+                    e.preventDefault();
+                    $('#add').trigger('click')
+                    
                 });
-
-
-
-
 
 
                 $('#add').on('click', function() {
+
                     var text = $('#text').val();
-                    $('#contentContainer').append('<h1 class="ui-widget-content">' + text + '</h1>');
-                    $('h1').draggable().css({
+                    var newElem = $('<h1 class="ui-widget-content">' + text + '</h1>');
+                    $('#contentContainer').append(newElem);
+                    newElem.draggable();
+                    newElem.css({
                         'position': 'absolute',
-                        'font-family': $('#font').val()
+                        'font-family': $('#font').val(),
+                        'font-size': $('#size').val()
                     });
+
                 });
-
-
-
-
-
-
-
-
-
-
 
             });
 
